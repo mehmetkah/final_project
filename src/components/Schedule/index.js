@@ -23,7 +23,7 @@ export default function Snack(props) {
   //   </div>
 
   return (
-    // temp id applie to div for temp styling, remove later
+    // temp id applied to div for temp styling, remove later
     <div id="tempFormStyle">
       <Form />
       <Empty />
