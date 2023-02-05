@@ -5,7 +5,7 @@ function NavBar() {
   return (
     <div className="navBar">
      <p>MovementSnax</p>
-     <button>Profile</button>
+     <a>Profile</a>
     </div>
   );
 }

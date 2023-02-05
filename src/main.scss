@@ -1,15 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@600&display=swap');
+
+body {
+  font-family: 'epilogue';
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .header {
   color: #3B7302;
   margin-top: 30px;
   margin-bottom: 30px;
+  width: 100%;
+  font-size: 1.5rem;
+
 }
 
 .day {
   display: flex;
   border: 2px solid #3B7302;
+  border-bottom: 0;
   height: 60px;
-  
+  width: 100%;
 
+  &:last-child {
+    border-bottom: 2px solid #3B7302;
+  }
 }
 
 .dayName {
@@ -19,7 +37,9 @@
   color: white;
   display: flex;
   align-items: center;
-  
+  width: 120px;
+  justify-content: center;
+
 }
 
 .addButton {
@@ -31,9 +51,25 @@
 }
 
 .cardContainer {
- 
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.mainContainer {
+
+
+
+
+
+  width: 70%;
+
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
 }
