@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import NavBar from "./components/NavBar";
+import Header from "./components/Header";
+
+import './main.scss';
 
 function App() {
+  let headerText = "Week of January 30, 2023"
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+      <main>
+        <Header headerText={headerText} />
+        <div className="day">
+          <p className="dayName">Monday</p>
+          <div className="cardContainer">
+          <button className="addButton">+</button>
+          </div>
+
+        </div>
+      </main>
     </div>
   );
 }

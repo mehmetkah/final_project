@@ -1,0 +1,39 @@
+.header {
+  color: #3B7302;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.day {
+  display: flex;
+  border: 2px solid #3B7302;
+  height: 60px;
+  
+
+}
+
+.dayName {
+  background-color: #3B7302;
+  height: 100%;
+  margin-top: 0;
+  color: white;
+  display: flex;
+  align-items: center;
+  
+}
+
+.addButton {
+  border-radius: 50%;
+  background-color: #C0D99C;
+  border: none;
+  width: 50px;
+  height: 50px;
+}
+
+.cardContainer {
+ 
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
