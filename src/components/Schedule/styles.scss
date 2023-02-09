@@ -1,0 +1,30 @@
+.cardContainer {
+  width: 100%;
+  /** commenting out temporarily to see all parts of component until conditional rendering is implemented 
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  **/
+}
+
+.addButton {
+  border-radius: 50%;
+  background-color: #C0D99C;
+  color: #3B7302;
+  border: none;
+  width: 70px;
+  height: 70px;
+  font-size: 3em;
+  box-shadow: 3px 3px 5px #ccc;
+}
+
+.addButton:hover {
+  cursor: pointer;
+}
+
+#tempFormStyle {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  
+}
