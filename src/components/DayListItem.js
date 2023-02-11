@@ -1,12 +1,31 @@
+import useState from "react";
 import "./DayListItem.scss";
-import APIKey from "../src/constants";
+import {APIKey as APIKey } from "../../src/constants";
 import Snack from "./Schedule";
 
+/*
+  Calling the useState() hook will return an array containing two values:
+  a reference to get the current value of the state
+  a setter function (i.e. a way to set the reference and re-render the app)
+  These two values are typically declared in a single line using array destructuring
+  The names used in the destructured array have a rule: We can pick the name we want for the reference, but the setter function needs to start with the word set
+*/
+
 export default function DayListItem(props) {
+
   // TODO: state of specific exercise can go here?
   // PSEUDOCODE:
   // 1. Make a network call to the api-ninjas API
   // 1. Store it in local state in this component, and pass the props down as needed
+
+ fetch("https://api.api-ninjas.com/v1/exercises?type=strength", {
+    method: 'GET',
+    headers: { 'X-Api-Key': APIKey },
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  });
 
   // const snacksByDay = {
   //   "1":{
