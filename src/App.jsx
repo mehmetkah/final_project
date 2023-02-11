@@ -4,31 +4,30 @@ import DayList from "./components/DayList"
 import './main.scss';
 import { useState } from "react";
 
-const mockSnacks = {
-  "Monday": {
-    id: 1,
-    day: "Monday",
-    exercise: "Squats",
-    reps: "10",
-    sets: "10"
-  },
-  "Tuesday": {
-    id: 2,
-    day: "Tuesday",
-    exercise: "Push-ups",
-    reps: "7",
-    sets: "5"
-  },
-};
-
-let headerText = "Week of January 30, 2023"
-const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-
 function App() {
 
-  const [snacksByDay, setSnacksByDay] = useState(mockSnacks)
+  const mockSnacks = {
+    "Monday": {
+      id: 1,
+      day: "Monday",
+      exercise: "Squats",
+      reps: "10",
+      sets: "10"
+    },
+    "Tuesday": {
+      id: 2,
+      day: "Tuesday",
+      exercise: "Push-ups",
+      reps: "7",
+      sets: "5"
+    },
+  };
   
+  let headerText = "Week of February 13, 2023"
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
+  const [snacksByDay, setSnacksByDay] = useState(mockSnacks);
+  
   return (
     <div className="App">
       <NavBar />

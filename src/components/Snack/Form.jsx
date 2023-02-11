@@ -16,7 +16,7 @@ export default function Form(props) {
   return (
     <>
     <form className="dailyForm">
-      <select id="movement" name="movement" value="Pick an exercise">
+      <select id="movement" name="movement">
         {movementOptions}
       </select>
       <select id="reps" name="reps">
