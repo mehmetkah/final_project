@@ -6,7 +6,7 @@ const movements = ["Pick an exercise", "Squats", "Push-ups", "Incline Hammer Cur
 
 const movementOptions = movements.map((exercise) => (<option value={exercise}>{exercise}</option>))
 
-const setsOptions = ["Number of sets","1", "3", "5"].map((sets) => (<option value={sets}>{sets}</option>))
+const setsOptions = ["Number of sets", "1", "3", "5"].map((sets) => (<option value={sets}>{sets}</option>))
 
 const intervalOptions = ["Length of interval", "15", "30", "45", "60"].map((interval) => (<option value={interval}>{interval}</option>))
 
@@ -15,22 +15,22 @@ const intervalOptions = ["Length of interval", "15", "30", "45", "60"].map((inte
 
 
 export default function Form(props) {
-  return(
+  return (
     <form className="dailyForm">
-      
+
       <select id="movement" name="movement" value="Pick an exercise">
-       {movementOptions}
+        {movementOptions}
       </select>
-      <input id="reps" name="reps" placeholder="Number of Reps"/>
-        
-      
-      
+      <input id="reps" name="reps" placeholder="Number of Reps" />
+
+
+
       <select id="movement" name="sets">
         {setsOptions}
       </select>
 
 
-      
+
       <select id="interval" name="interval">
         {intervalOptions}
       </select>
