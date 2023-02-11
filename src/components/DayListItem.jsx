@@ -1,20 +1,65 @@
 import "./DayListItem.scss";
-import APIKey from "../constants";
+import { APIKey as APIKey } from "../constants";
 import Snack from "./Snack";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 export default function DayListItem(props) {
-
- 
-
 
   // TODO: state of specific exercise can go here?
   // PSEUDOCODE:
   // 1. Make a network call to the api-ninjas API
   // 1. Store it in local state in this component, and pass the props down as needed
 
-  
+  // const [exercise, setExercise] = useState(3);
+  const fetchExercise = () => {
+    fetch("https://api.api-ninjas.com/v1/exercises?type=strength", {
+      method: 'GET',
+      headers: { 'X-Api-Key': APIKey },
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      //setExercise(data[0]);
+    })
+    .catch((error) => {
+      throw error;
+    });
+  }
+
+  // useEffect(() => {
+  //   if(!exercise) {
+  //     console.log("Fetching exercise...");
+  //     fetchExercise();
+  //   }
+  // }, [exercise]);
+
+
+  // const snacksByDay = {
+  //   "1":{
+  //     id: 1,
+  //     day: "Monday",
+  //     exercise: "Squats",
+  //     reps: "10",
+  //     sets: "10"
+  //   },
+  //   "2":{
+  //     id: 2,
+  //     day: "Tuesday",
+  //     exercise: "Push-ups",
+  //     reps: "7",
+  //     sets: "5"
+  //   },
+  // };
+
+  // const dailyMovements = Object.values(snacksByDay).map((movement) => {
+  //   return (
+  //     <Snack 
+  //       key={movement.id}
+  //       {...movement}
+  //     />
+  //   )
+  // })
 
   return (
     <li className="dayListItem">

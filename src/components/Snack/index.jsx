@@ -7,7 +7,7 @@ import Empty from "./Empty";
 import MovementComplete from "./MovementComplete";
 import Form from "./Form";
 import Countdown from "./Countdown";
-import useVisualMode from "../../hooks/useVisualMode"
+// import useVisualMode from "../../hooks/useVisualMode"
 import "./styles.scss";
 import { useState } from "react";
 
