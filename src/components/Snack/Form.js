@@ -2,28 +2,37 @@
 
 import "./styles.scss";
 
+const movements = ["Pick an exercise", "Squats", "Push-ups", "Incline Hammer Curls", "Wide Grip Pull-Up"]
+
+const movementOptions = movements.map((exercise) => (<option value={exercise}>{exercise}</option>))
+
+const setsOptions = ["Number of sets","1", "3", "5"].map((sets) => (<option value={sets}>{sets}</option>))
+
+const intervalOptions = ["Length of interval", "15", "30", "45", "60"].map((interval) => (<option value={interval}>{interval}</option>))
+
+
+
+
+
 export default function Form(props) {
   return(
     <form className="dailyForm">
-      <label for="movement">Pick an exercise:</label>
-      <select id="movement" name="movement">
-        <option value="push-ups">Push-ups</option>
-        <option value="squats">Squats</option>
+      
+      <select id="movement" name="movement" value="Pick an exercise">
+       {movementOptions}
       </select>
-      <label for="reps">Number of Reps:</label>
-      <select id="reps" name="reps">
-        <option value="5">5</option>
-        <option value="10">10</option>
-      </select>
-      <label for="Movement">Number of sets:</label>
+      <input id="reps" name="reps" placeholder="Number of Reps"/>
+        
+      
+      
       <select id="movement" name="sets">
-        <option value="5">5</option>
-        <option value="10">10</option>
+        {setsOptions}
       </select>
-      <label for="interval">Length of interval:</label>
+
+
+      
       <select id="interval" name="interval">
-        <option value="30">30 min</option>
-        <option value="60">60 min</option>
+        {intervalOptions}
       </select>
     </form>
   )
