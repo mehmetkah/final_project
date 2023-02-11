@@ -35,8 +35,7 @@ export default function Snack(props) {
   //   </div>
 
   return (
-    // temp id applied to div for temp styling, remove later
-    <div id="tempFormStyle">
+    <div>
       {mode === "FORM" && <Form snack={props.snack} onBack={onBack}   />}
       {mode === "EMPTY" && <Empty onAdd={onAdd}/>}
       <Countdown />
