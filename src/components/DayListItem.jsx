@@ -5,27 +5,26 @@ import { useState, useEffect } from "react";
 
 
 export default function DayListItem(props) {
-
   // TODO: state of specific exercise can go here?
   // PSEUDOCODE:
   // 1. Make a network call to the api-ninjas API
   // 1. Store it in local state in this component, and pass the props down as needed
 
   // const [exercise, setExercise] = useState(3);
-  const fetchExercise = () => {
-    fetch("https://api.api-ninjas.com/v1/exercises?type=strength", {
-      method: 'GET',
-      headers: { 'X-Api-Key': APIKey },
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      //setExercise(data[0]);
-    })
-    .catch((error) => {
-      throw error;
-    });
-  }
+  // const fetchExercise = () => {
+  //   fetch("https://api.api-ninjas.com/v1/exercises?type=strength", {
+  //     method: 'GET',
+  //     headers: { 'X-Api-Key': APIKey },
+  //   })
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     console.log(data);
+  //     //setExercise(data[0]);
+  //   })
+  //   .catch((error) => {
+  //     throw error;
+  //   });
+  // }
 
   // useEffect(() => {
   //   if(!exercise) {
@@ -35,24 +34,7 @@ export default function DayListItem(props) {
   // }, [exercise]);
 
 
-  // const snacksByDay = {
-  //   "1":{
-  //     id: 1,
-  //     day: "Monday",
-  //     exercise: "Squats",
-  //     reps: "10",
-  //     sets: "10"
-  //   },
-  //   "2":{
-  //     id: 2,
-  //     day: "Tuesday",
-  //     exercise: "Push-ups",
-  //     reps: "7",
-  //     sets: "5"
-  //   },
-  // };
-
-  // const dailyMovements = Object.values(snacksByDay).map((movement) => {
+  // const dailyMovements = Object.values(props.snacks).map((movement) => {
   //   return (
   //     <Snack 
   //       key={movement.id}
@@ -66,8 +48,7 @@ export default function DayListItem(props) {
       <p className="dayName">{props.day}</p>
         <article className="cardContainer">
           <Snack 
-
-          snack={props.snack}
+          snack={props.snacks}
           />
         </article>
     </li>
