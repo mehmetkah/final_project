@@ -1,11 +1,11 @@
 import "./NavBar.scss";
 
-
 function NavBar() {
   return (
     <div className="navBar">
-     <p>MovementSnax</p>
-     <a>Profile</a>
+      <p>MovementSnax</p>
+      <a href="/">Home</a>
+      <a href="/Profile">Profile</a>
     </div>
   );
 }
