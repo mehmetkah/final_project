@@ -1,8 +1,10 @@
 import NavBar from "./components/NavBar";
 import Header from "./components/Header";
-import DayList from "./components/DayList"
+import DayList from "./components/DayList";
+import Profile from "./components/Profile";
 import './main.scss';
 import { useState } from "react";
+import { Routes, Route} from "react-router-dom";
 
 const mockSnacks = {
   "Monday": {
@@ -34,11 +36,23 @@ function App() {
       <NavBar />
       <main>
         <div className="mainContainer">
-          <Header headerText={headerText} />
-          <DayList 
+          {/* <Header headerText={headerText} /> */}
+          <Routes>
+        {/* <Route path="/"> */}
+            <Route index element={<DayList 
           days={days}
           snacks={snacksByDay}
-          />
+          />} />
+          <Route path="profile" element={<Profile/>} />
+          
+
+          {/* Using path="*"" means "match anything", so this route
+                acts like a catch-all for URLs that we don't have explicit
+                routes for. */}
+          {/* <Route path="*" element={<NoMatch />} /> */}
+        {/* </Route> */}
+      </Routes>
+          
         </div>
       </main>
     </div>
