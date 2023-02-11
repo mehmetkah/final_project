@@ -1,14 +1,34 @@
 import NavBar from "./components/NavBar";
 import Header from "./components/Header";
 import DayList from "./components/DayList"
-import Schedule from "./components/Schedule";
 import './main.scss';
+import { useState } from "react";
 
-function App(props) {
+const mockSnacks = {
+  "Monday": {
+    id: 1,
+    day: "Monday",
+    exercise: "Squats",
+    reps: "10",
+    sets: "10"
+  },
+  "Tuesday": {
+    id: 2,
+    day: "Tuesday",
+    exercise: "Push-ups",
+    reps: "7",
+    sets: "5"
+  },
+};
+
+let headerText = "Week of January 30, 2023"
+const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+function App() {
+
+  const [snacksByDay, setSnacksByDay] = useState(mockSnacks)
   
-  let headerText = "Week of January 30, 2023"
 
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   return (
     <div className="App">
       <NavBar />
@@ -17,6 +37,7 @@ function App(props) {
           <Header headerText={headerText} />
           <DayList 
           days={days}
+          snacks={snacksByDay}
           />
         </div>
       </main>

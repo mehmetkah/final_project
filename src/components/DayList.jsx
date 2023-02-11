@@ -1,13 +1,21 @@
-import DayListItem from "./DayListItem"
+import DayListItem from "./DayListItem";
+
+
+
+
+
 export default function DayList(props) {
+
+  
   const dayList = props.days.map((day) => {
     return (
       <DayListItem
         day={day}
+        snack={props.snacks[day]}
       />
     )
   });
-  return(
+  return (
     <ul>
       {dayList}
     </ul>
