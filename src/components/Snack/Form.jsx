@@ -16,6 +16,10 @@ const intervalOptions = ["Length of interval", "15", "30", "45", "60"].map((inte
 
 export default function Form(props) {
   return (
+
+    <>
+    <button onClick={props.onBack}>Back</button>
+
     <form className="dailyForm">
 
       <select id="movement" name="movement" value="Pick an exercise">
@@ -35,5 +39,6 @@ export default function Form(props) {
         {intervalOptions}
       </select>
     </form>
+    </>
   )
 }

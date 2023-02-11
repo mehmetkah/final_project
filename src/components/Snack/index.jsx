@@ -15,10 +15,13 @@ export default function Snack(props) {
   
   const [mode, setMode] = useState(props.snack ? "FORM": "EMPTY")
 
-  const onClick = (() => {
+  const onAdd = (() => {
     setMode("FORM")
   })
 
+  const onBack = (() => {
+    setMode("EMPTY")
+  })
 
 
   // const EMPTY = "EMPTY";
@@ -34,8 +37,8 @@ export default function Snack(props) {
   return (
     // temp id applied to div for temp styling, remove later
     <div id="tempFormStyle">
-      {mode === "FORM" && <Form snack={props.snack}   />}
-      {mode === "EMPTY" && <Empty onClick={onClick}/>}
+      {mode === "FORM" && <Form snack={props.snack} onBack={onBack}   />}
+      {mode === "EMPTY" && <Empty onAdd={onAdd}/>}
       <Countdown />
       <MovementComplete />
     </div>

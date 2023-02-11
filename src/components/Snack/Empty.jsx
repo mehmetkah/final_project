@@ -7,6 +7,6 @@ import React from "react";
 export default function Empty(props) {
   return (
   
-    <button className="addButton" onClick={props.onClick}>+</button>
+    <button className="addButton" onClick={props.onAdd}>+</button>
   );
 }
