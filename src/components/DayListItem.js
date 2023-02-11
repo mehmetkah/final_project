@@ -1,4 +1,4 @@
-import useState from "react";
+import { useState, useEffect } from "react";
 import "./DayListItem.scss";
 import {APIKey as APIKey } from "../../src/constants";
 import Snack from "./Schedule";
@@ -17,16 +17,28 @@ export default function DayListItem(props) {
   // PSEUDOCODE:
   // 1. Make a network call to the api-ninjas API
   // 1. Store it in local state in this component, and pass the props down as needed
-
- fetch("https://api.api-ninjas.com/v1/exercises?type=strength", {
-    method: 'GET',
-    headers: { 'X-Api-Key': APIKey },
-  })
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-  });
-
+ // const [exercise, setExercise] = useState(3);
+ 
+  // const fetchExercise = () => {
+  //   fetch("https://api.api-ninjas.com/v1/exercises?type=strength", {
+  //     method: 'GET',
+  //     headers: { 'X-Api-Key': APIKey },
+  //   })
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     //console.log(data);
+  //     setExercise(data[0]);
+  //   })
+  //   .catch((error) => {
+  //     throw error;
+  //   });
+  // }
+  // useEffect(() => {
+  //   if(!exercise) {
+  //     console.log("Fetching exercise...");
+  //     fetchExercise();
+  //   }
+  // }, [exercise]);
   // const snacksByDay = {
   //   "1":{
   //     id: 1,
