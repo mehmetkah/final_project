@@ -1,12 +1,14 @@
 import "./Profile.scss";
+import Avatar_Aang from "./Avatar_Aang.png";
+
 export default function Profile(props) {
   return (
     <div className="profile">
       <div className="userInfo">
         <img
-          alt="logo"
-          src="/Users/mehmetkahraman/final_project/public/Avatar_Aang.png"
-        ></img>
+          alt="avatar"
+          src={Avatar_Aang}
+        />
         <h3>Mover</h3>
       </div>
       <div className="userActions">
