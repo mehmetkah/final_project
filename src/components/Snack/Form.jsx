@@ -53,7 +53,7 @@ export default function Form(props) {
         <select id="movement" name="sets">
           {setsOptions}
         </select>
-        <select id="interval" name="interval">
+        <select id="interval" name="interval" onChange={(e) => {setTimer(e.target.value)}}>
           {intervalOptions}
         </select>
         <button onClick={onStart}>Start</button>
