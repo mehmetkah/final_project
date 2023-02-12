@@ -1,6 +1,9 @@
 // THIS VIEW WILL DISPLAY THE FORM FOR ADDING AN EXERCISE SCHEDULE FOR THE DAY - NEED TO WORK ON STYLING - NEED TO ADD START/RESET BUTTON
 
 import "./styles.scss";
+import "./Countdown";
+import Countdown from "./Countdown";
+import { useState } from "react";
 
 const movements = ["Pick an exercise", "Squats", "Push-ups", "Sit-ups", "Wide Grip Pull-Up"]
 
@@ -13,24 +16,40 @@ const intervalOptions = ["Length of interval (min)", "15", "30", "45", "60"].map
 
 
 export default function Form(props) {
+
+  const [showTimer, setShowTimer] = useState(false)
+  const [timer, setTimer] = useState(30)
+
+  const onStart = (e) => { 
+    e.preventDefault()
+    setShowTimer(true)
+    setInterval(() => {
+      setTimer((prev) => prev - 1)
+    }, 1000)
+  };
+
   return (
     <>
-    <form className="dailyForm">
-      <select id="movement" name="movement">
-        {movementOptions}
-      </select>
-      <select id="reps" name="reps">
-        {repsOptions}
-      </select>
-      <select id="movement" name="sets">
-        {setsOptions}
-      </select>
-      <select id="interval" name="interval">
-        {intervalOptions}
-      </select>
-      <button>Start</button>
+      <form className="dailyForm">
+        <select id="movement" name="movement">
+          {movementOptions}
+        </select>
+        <select id="reps" name="reps">
+          {repsOptions}
+        </select>
+        <select id="movement" name="sets">
+          {setsOptions}
+        </select>
+        <select id="interval" name="interval">
+          {intervalOptions}
+        </select>
+        <button onClick={onStart}>Start</button>
+        
+      </form>
+
       <button onClick={props.onBack}>Back</button>
-    </form>
+      {showTimer && <Countdown timer={timer} />}
+
     </>
   )
 }
