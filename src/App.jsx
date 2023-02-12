@@ -35,16 +35,17 @@ function App() {
       <NavBar />
       <main>
         <div className="mainContainer">
-          {/* <Header headerText={headerText} /> */}
-          <Routes>
-        {/* <Route path="/"> */}
-            <Route index element={<DayList 
-          days={days}
-          snacks={snacksByDay}
-          />} />
+        <Routes>
+          <Route index element=
+            {<div>
+              <Header headerText={headerText} />
+              <DayList
+              days={days}
+              snacks={snacksByDay} />
+            </div>}
+          />
           <Route path="profile" element={<Profile/>} />
           
-
           {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit
                 routes for. */}

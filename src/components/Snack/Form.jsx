@@ -1,8 +1,10 @@
 // THIS VIEW WILL DISPLAY THE FORM FOR ADDING AN EXERCISE SCHEDULE FOR THE DAY - NEED TO WORK ON STYLING - NEED TO ADD START/RESET BUTTON
 
 import "./styles.scss";
+import { useState, useEffect } from "react";
+import DailyTotal from "./DailyTotal";
 
-const movements = ["Pick an exercise", "Squats", "Push-ups", "Sit-ups", "Wide Grip Pull-Up"]
+const movements = ["Pick an exercise", "Squats", "Push-ups", "Sit-ups", "Pull-Ups", "Jumping Jacks"]
 
 const movementOptions = movements.map((exercise) => (<option value={exercise}>{exercise}</option>))
 
@@ -11,26 +13,48 @@ const setsOptions = ["Number of sets", "1", "2", "3", "4", "5"].map((sets) => (<
 
 const intervalOptions = ["Length of interval (min)", "15", "30", "45", "60"].map((interval) => (<option value={interval}>{interval}</option>))
 
-
 export default function Form(props) {
+  
+  const [movement, setMovement] = useState("");
+  const [reps, setReps] = useState("0");
+  //const [sets, setSets] = useState("0");
+  const [dailyTotal, setDailyTotal] = useState({
+    movement: "",
+    reps: 0,
+    sets: 0
+  });
+
+  // useEffect(() => {
+
+  // })
+  
   return (
     <>
-    <form className="dailyForm">
-      <select id="movement" name="movement">
-        {movementOptions}
-      </select>
-      <select id="reps" name="reps">
-        {repsOptions}
-      </select>
-      <select id="movement" name="sets">
-        {setsOptions}
-      </select>
-      <select id="interval" name="interval">
-        {intervalOptions}
-      </select>
-      <button>Start</button>
-      <button onClick={props.onBack}>Back</button>
-    </form>
+      <form className="dailyForm" autoComplete="off" onSubmit={event => event.preventDefault()}>
+        <select id="movement" name="movement" onChange={(event) => setMovement(event.target.value)}>
+          {movementOptions}
+        </select>
+        <select id="reps" name="reps" onChange={(event) => setReps(event.target.value)}>
+          {repsOptions}
+        </select>
+        <select id="sets" name="sets">
+          {setsOptions}
+        </select>
+        <select id="interval" name="interval">
+          {intervalOptions}
+        </select>
+        <button>Start</button>
+        <button onClick={props.onBack}>Back</button>
+        <button type="submit" onClick={() => {setDailyTotal(prev => ({
+          ...prev, movement: movement, reps: reps, sets: dailyTotal.sets + 1
+        }))
+        }}>Done</button>
+      </form>
+      <DailyTotal 
+        dailyTotal={dailyTotal}
+      />
     </>
   )
 }
+
+//onChange={(event) => setSets(event.target.value)}>

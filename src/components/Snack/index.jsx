@@ -22,13 +22,17 @@ export default function Snack(props) {
     setMode("EMPTY")
   })
 
+  // const onDone = (() => {
+  //   setMode("FORM");
+  // })
+
   return (
     <div>
       {mode === "COMPLETE" && <MovementComplete 
       dailyMovement={props.snack}
       />}
-      {mode === "EMPTY" && <Empty onAdd={onAdd}/>}
-      {mode === "FORM" && <Form onBack={onBack}   />}
+      {mode === "EMPTY" && <Empty onAdd={onAdd} />}
+      {mode === "FORM" && <Form onBack={onBack} />}
       
     </div>
     
