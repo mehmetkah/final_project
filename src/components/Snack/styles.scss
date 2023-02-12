@@ -1,10 +1,9 @@
 .cardContainer {
   width: 100%;
-  /** commenting out temporarily to see all parts of component until conditional rendering is implemented 
   display: flex;
   justify-content: center;
   align-items: center; 
-  **/
+
 }
 
 .addButton {
@@ -20,11 +19,4 @@
 
 .addButton:hover {
   cursor: pointer;
-}
-
-#tempFormStyle {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  
 }

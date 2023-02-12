@@ -1,44 +1,57 @@
 import NavBar from "./components/NavBar";
 import Header from "./components/Header";
-import DayList from "./components/DayList"
+import DayList from "./components/DayList";
+import Profile from "./components/Profile";
 import './main.scss';
 import { useState } from "react";
-
-const mockSnacks = {
-  "Monday": {
-    id: 1,
-    day: "Monday",
-    exercise: "Squats",
-    reps: "10",
-    sets: "10"
-  },
-  "Tuesday": {
-    id: 2,
-    day: "Tuesday",
-    exercise: "Push-ups",
-    reps: "7",
-    sets: "5"
-  },
-};
-
-let headerText = "Week of January 30, 2023"
-const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+import { Routes, Route} from "react-router-dom";
 
 function App() {
 
-  const [snacksByDay, setSnacksByDay] = useState(mockSnacks)
+  const mockSnacks = {
+    "Monday": {
+      id: 1,
+      day: "Monday",
+      exercise: "Squats",
+      reps: "10",
+      sets: "10"
+    },
+    "Tuesday": {
+      id: 2,
+      day: "Tuesday",
+      exercise: "Push-ups",
+      reps: "7",
+      sets: "5"
+    },
+  };
   
+  let headerText = "Week of February 13, 2023"
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
+  const [snacksByDay, setSnacksByDay] = useState(mockSnacks);
+  
   return (
     <div className="App">
       <NavBar />
       <main>
         <div className="mainContainer">
-          <Header headerText={headerText} />
-          <DayList 
+          {/* <Header headerText={headerText} /> */}
+          <Routes>
+        {/* <Route path="/"> */}
+            <Route index element={<DayList 
           days={days}
           snacks={snacksByDay}
-          />
+          />} />
+          <Route path="profile" element={<Profile/>} />
+          
+
+          {/* Using path="*"" means "match anything", so this route
+                acts like a catch-all for URLs that we don't have explicit
+                routes for. */}
+          {/* <Route path="*" element={<NoMatch />} /> */}
+        {/* </Route> */}
+      </Routes>
+          
         </div>
       </main>
     </div>
