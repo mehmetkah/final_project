@@ -18,27 +18,27 @@ export default function Form(props) {
   return (
 
     <>
-    <button onClick={props.onBack}>Back</button>
 
-    <form className="dailyForm">
+      <form className="dailyForm">
 
-      <select id="movement" name="movement" value="Pick an exercise">
-        {movementOptions}
-      </select>
-      <input id="reps" name="reps" placeholder="Number of Reps" />
-
-
-
-      <select id="movement" name="sets">
-        {setsOptions}
-      </select>
+        <select id="movement" name="movement" value="Pick an exercise">
+          {movementOptions}
+        </select>
+        <input id="reps" name="reps" placeholder="Number of Reps" />
 
 
 
-      <select id="interval" name="interval">
-        {intervalOptions}
-      </select>
-    </form>
+        <select id="movement" name="sets">
+          {setsOptions}
+        </select>
+
+
+
+        <select id="interval" name="interval">
+          {intervalOptions}
+        </select>
+      </form>
+      <button onClick={props.onBack}>Back</button>
     </>
   )
 }
