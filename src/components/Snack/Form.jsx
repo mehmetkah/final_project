@@ -3,7 +3,7 @@
 import "./styles.scss";
 import "./Countdown";
 import Countdown from "./Countdown";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const movements = ["Pick an exercise", "Squats", "Push-ups", "Sit-ups", "Wide Grip Pull-Up"]
 
@@ -20,13 +20,26 @@ export default function Form(props) {
   const [showTimer, setShowTimer] = useState(false)
   const [timer, setTimer] = useState(30)
 
+
   const onStart = (e) => { 
     e.preventDefault()
     setShowTimer(true)
-    setInterval(() => {
-      setTimer((prev) => prev - 1)
-    }, 1000)
   };
+
+  useEffect(() => {
+    if (!showTimer) return 
+    const intervalId = setInterval(() => {
+      setTimer((prev) => prev - 1);
+    }, 1000);
+    
+    if (timer < 1) {
+      clearInterval(intervalId)
+    }
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [timer, showTimer]);
 
   return (
     <>
