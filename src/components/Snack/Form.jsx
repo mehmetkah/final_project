@@ -2,6 +2,7 @@
 
 import "./styles.scss";
 import { useState, useEffect } from "react";
+import Countdown from "./Countdown";
 import DailyTotal from "./DailyTotal";
 
 const movements = ["Pick an exercise", "Squats", "Push-ups", "Sit-ups", "Pull-Ups", "Jumping Jacks"]
@@ -24,9 +25,30 @@ export default function Form(props) {
     sets: 0
   });
 
-  // useEffect(() => {
+  const [showTimer, setShowTimer] = useState(false)
+  const [timer, setTimer] = useState(30)
 
-  // })
+
+  const onStart = (e) => { 
+    e.preventDefault()
+    setShowTimer(true)
+  };
+
+  useEffect(() => {
+    if (!showTimer) return 
+    const intervalId = setInterval(() => {
+      setTimer((prev) => prev - 1);
+    }, 1000);
+    
+    if (timer < 1) {
+      clearInterval(intervalId)
+    }
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [timer, showTimer]);
+
   
   return (
     <>
@@ -40,21 +62,20 @@ export default function Form(props) {
         <select id="sets" name="sets">
           {setsOptions}
         </select>
-        <select id="interval" name="interval">
+        <select id="interval" name="interval" onChange={(e) => {setTimer(e.target.value)}}>
           {intervalOptions}
         </select>
-        <button>Start</button>
+        <button onClick={onStart}>Start</button>
         <button onClick={props.onBack}>Back</button>
         <button type="submit" onClick={() => {setDailyTotal(prev => ({
           ...prev, movement: movement, reps: reps, sets: dailyTotal.sets + 1
         }))
         }}>Done</button>
       </form>
+      {showTimer && <Countdown timer={timer} />}
       <DailyTotal 
         dailyTotal={dailyTotal}
       />
     </>
   )
 }
-
-//onChange={(event) => setSets(event.target.value)}>

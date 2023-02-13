@@ -6,7 +6,7 @@ NO SOUND AT THIS STAGE - WE WILL HAVE ONE DEFAULT SOUND AS AN ASSET IN THE APP
 export default function Countdown(props) {
   return (
     <h2>
-      TIME
+      {props.timer}
     </h2>
   )
 }
