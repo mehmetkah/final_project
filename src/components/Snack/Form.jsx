@@ -26,15 +26,20 @@ export default function Form(props) {
   });
 
   const [showTimer, setShowTimer] = useState(false)
-  const [timer, setTimer] = useState(30)
-
+  const [timer, setTimer] = useState(0)
+  const [length, setLength] = useState(0);
 
   const onStart = (e) => { 
     e.preventDefault()
     setShowTimer(true)
   };
 
-  useEffect(() => {
+  const getTimerLength = function(d) {
+    setTimer(d)
+    setLength(d)
+  }
+
+    useEffect(() => {
     if (!showTimer) return 
     const intervalId = setInterval(() => {
       setTimer((prev) => prev - 1);
@@ -47,9 +52,8 @@ export default function Form(props) {
     return () => {
       clearInterval(intervalId);
     };
-  }, [timer, showTimer]);
+    }, [timer, showTimer]);
 
-  
   return (
     <>
       <form className="dailyForm" autoComplete="off" onSubmit={event => event.preventDefault()}>
@@ -62,7 +66,7 @@ export default function Form(props) {
         <select id="sets" name="sets">
           {setsOptions}
         </select>
-        <select id="interval" name="interval" onChange={(e) => {setTimer(e.target.value)}}>
+        <select id="interval" name="interval" onChange={(e) => {getTimerLength(e.target.value)}}>
           {intervalOptions}
         </select>
         <button onClick={onStart}>Start</button>
@@ -73,6 +77,8 @@ export default function Form(props) {
         }}>Done</button>
       </form>
       {showTimer && <Countdown timer={timer} />}
+      {showTimer && <button onClick={() => setTimer(length)}>Reset</button>}
+    
       <DailyTotal 
         dailyTotal={dailyTotal}
       />
