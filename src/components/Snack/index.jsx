@@ -6,7 +6,6 @@ import React from "react";
 import Empty from "./Empty";
 import MovementComplete from "./MovementComplete";
 import Form from "./Form";
-import Countdown from "./Countdown";
 import "./styles.scss";
 import { useState } from "react";
 
