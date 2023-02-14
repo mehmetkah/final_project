@@ -28,31 +28,45 @@ export default function Form(props) {
   const [showTimer, setShowTimer] = useState(false)
   const [timer, setTimer] = useState(0)
   const [length, setLength] = useState(0);
+  const [alarmRepeat, setAlarmRepeat] = useState(false);
 
   const onStart = (e) => { 
     e.preventDefault()
     setShowTimer(true)
+    // set to true so alarm will sound - passed to Countdown as prop
+    setAlarmRepeat(true)
   };
-
+// combine setting timer and length of timer so reset button can grab the value in interval select as well
   const getTimerLength = function(d) {
     setTimer(d)
     setLength(d)
   }
 
-    useEffect(() => {
+// combine setting data for Daily Total and set alarmRepeat to false so sound does not play on re-render
+  const onDone = function(d) {
+    setDailyTotal(d);
+    setAlarmRepeat(false);
+  }
+
+  const onReset = function(d) {
+    setTimer(d)
+    setAlarmRepeat(true)
+  }
+
+  useEffect(() => {
     if (!showTimer) return 
     const intervalId = setInterval(() => {
       setTimer((prev) => prev - 1);
     }, 1000);
     
     if (timer < 1) {
-      clearInterval(intervalId)
+    clearInterval(intervalId)
     }
 
     return () => {
-      clearInterval(intervalId);
+    clearInterval(intervalId);
     };
-    }, [timer, showTimer]);
+  }, [timer, showTimer]);
 
   return (
     <>
@@ -71,13 +85,14 @@ export default function Form(props) {
         </select>
         <button onClick={onStart}>Start</button>
         <button onClick={props.onBack}>Back</button>
-        <button type="submit" onClick={() => {setDailyTotal(prev => ({
+        <button type="submit" onClick={() => {onDone
+        (prev => ({
           ...prev, movement: movement, reps: reps, sets: dailyTotal.sets + 1
         }))
         }}>Done</button>
       </form>
-      {showTimer && <Countdown timer={timer} />}
-      {showTimer && <button onClick={() => setTimer(length)}>Reset</button>}
+      {showTimer && <Countdown timer={timer} alarmRepeat={alarmRepeat}/>}
+      {showTimer && <button onClick={() => onReset(length)}>Reset</button>}
     
       <DailyTotal 
         dailyTotal={dailyTotal}
