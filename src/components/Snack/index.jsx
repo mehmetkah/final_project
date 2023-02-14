@@ -10,8 +10,14 @@ import "./styles.scss";
 import { useState } from "react";
 
 export default function Snack(props) {
-  
-  const [mode, setMode] = useState(props.snack ? "COMPLETE": "EMPTY")
+
+  const [completedDailyTotal, setCompletedDailyTotal] = useState({
+    movement: "",
+    reps: 0,
+    sets: 0
+  });
+
+  const [mode, setMode] = useState("EMPTY")
 
   const onAdd = (() => {
     setMode("FORM")
@@ -21,19 +27,25 @@ export default function Snack(props) {
     setMode("EMPTY")
   })
 
-  // const onDone = (() => {
-  //   setMode("FORM");
-  // })
+  const onDone = function(d) {
+    setMode("COMPLETE");
+    setCompletedDailyTotal(d);
+  }
 
   return (
     <div>
-      {mode === "COMPLETE" && <MovementComplete 
-      dailyMovement={props.snack}
-      />}
+
       {mode === "EMPTY" && <Empty onAdd={onAdd} />}
-      {mode === "FORM" && <Form onBack={onBack} />}
-      
+      {mode === "FORM" && <Form onBack={onBack} onDone={onDone}/>}
+      {mode === "COMPLETE" && <MovementComplete dailyMovement={completedDailyTotal}/>}
     </div>
     
   )
 };
+
+/**
+ *       {mode === "OLDCOMPLETE" && <MovementComplete 
+      dailyMovement={props.snack}
+      />}
+ * 
+ */

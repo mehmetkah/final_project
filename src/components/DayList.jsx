@@ -7,7 +7,6 @@ export default function DayList(props) {
     return (
       <DayListItem
         day={day}
-        snacks={props["snacks"][day]}
       />
     )
     

@@ -15,10 +15,14 @@ const setsOptions = ["Number of sets", "1", "2", "3", "4", "5"].map((sets) => (<
 const intervalOptions = ["Length of interval (min)", "1", "15", "30", "45", "60"].map((interval) => (<option value={interval}>{interval}</option>))
 
 export default function Form(props) {
-  
+  // Handle form submit - pass info up to index
+  const onTrigger = (event) => {
+    props.onDone(dailyTotal);
+    event.preventDefault();
+  }
+
   const [movement, setMovement] = useState("");
   const [reps, setReps] = useState("0");
-  //const [sets, setSets] = useState("0");
   const [dailyTotal, setDailyTotal] = useState({
     movement: "",
     reps: 0,
@@ -43,7 +47,7 @@ export default function Form(props) {
   }
 
 // combine setting data for Daily Total and set alarmRepeat to false so sound does not play on re-render
-  const onDone = function(d) {
+  const onMoved = function(d) {
     setDailyTotal(d);
     setAlarmRepeat(false);
   }
@@ -70,7 +74,7 @@ export default function Form(props) {
 
   return (
     <>
-      <form className="dailyForm" autoComplete="off" onSubmit={event => event.preventDefault()}>
+      <form className="dailyForm" autoComplete="off" onSubmit={onTrigger}>
         <select id="movement" name="movement" onChange={(event) => setMovement(event.target.value)}>
           {movementOptions}
         </select>
@@ -85,18 +89,23 @@ export default function Form(props) {
         </select>
         <button onClick={onStart}>Start</button>
         <button onClick={props.onBack}>Back</button>
-        <button type="submit" onClick={() => {onDone
+        <button type="submit">Done</button>
+      </form>
+      {showTimer && 
+        <>
+          <Countdown timer={timer} alarmRepeat={alarmRepeat}/>
+          <button onClick={() => onReset(length)}>Reset</button>
+          <button onClick={() => {onMoved
         (prev => ({
           ...prev, movement: movement, reps: reps, sets: dailyTotal.sets + 1
         }))
-        }}>Done</button>
-      </form>
-      {showTimer && <Countdown timer={timer} alarmRepeat={alarmRepeat}/>}
-      {showTimer && <button onClick={() => onReset(length)}>Reset</button>}
+        }}>Moved!</button>
+          <DailyTotal 
+          dailyTotal={dailyTotal}
+          />
+        </>
+      }
     
-      <DailyTotal 
-        dailyTotal={dailyTotal}
-      />
     </>
   )
 }
