@@ -3,11 +3,11 @@ import Header from "./components/Header";
 import DayList from "./components/DayList";
 import Profile from "./components/Profile";
 import './main.scss';
-import { useState } from "react";
 import { Routes, Route} from "react-router-dom";
 
 function App() {
 
+  /*
   const mockSnacks = {
     "Monday": {
       id: 1,
@@ -24,12 +24,14 @@ function App() {
       sets: "5"
     },
   };
-  
+  */
   let headerText = "Week of February 13, 2023"
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
+  /*
   const [snacksByDay, setSnacksByDay] = useState(mockSnacks);
-  
+  */
+
   return (
     <div className="App">
       <NavBar />
@@ -40,8 +42,7 @@ function App() {
             {<div>
               <Header headerText={headerText} />
               <DayList
-              days={days}
-              snacks={snacksByDay} />
+              days={days}/>
             </div>}
           />
           <Route path="profile" element={<Profile/>} />
