@@ -12,7 +12,7 @@ const movementOptions = movements.map((exercise) => (<option value={exercise}>{e
 const repsOptions = ["Number of reps", "5", "10", "15", "20"].map((reps) => (<option value={reps}>{reps}</option>))
 const setsOptions = ["Number of sets", "1", "2", "3", "4", "5"].map((sets) => (<option value={sets}>{sets}</option>))
 
-const intervalOptions = ["Length of interval (min)", "15", "30", "45", "60"].map((interval) => (<option value={interval}>{interval}</option>))
+const intervalOptions = ["Length of interval (min)", "1", "15", "30", "45", "60"].map((interval) => (<option value={interval}>{interval}</option>))
 
 export default function Form(props) {
   
@@ -26,8 +26,8 @@ export default function Form(props) {
   });
 
   const [showTimer, setShowTimer] = useState(false)
-  const [timer, setTimer] = useState(0)
   const [length, setLength] = useState(0);
+  const [timer, setTimer] = useState(0)
   const [alarmRepeat, setAlarmRepeat] = useState(false);
 
   const onStart = (e) => { 
@@ -38,8 +38,8 @@ export default function Form(props) {
   };
 // combine setting timer and length of timer so reset button can grab the value in interval select as well
   const getTimerLength = function(d) {
-    setTimer(d)
-    setLength(d)
+    setTimer(d * 60)
+    setLength(d * 60)
   }
 
 // combine setting data for Daily Total and set alarmRepeat to false so sound does not play on re-render
