@@ -3,8 +3,11 @@ import "./NavBar.scss";
 function NavBar() {
   return (
     <div className="navBar">
-      <a href="/">MovementSnax</a>
-      <a href="/Profile">Profile</a>
+      <p className="logo">MovementSnax</p>
+     
+        <a href="/">Home</a>
+        <a href="/Profile">Profile</a>
+      
     </div>
   );
 }
