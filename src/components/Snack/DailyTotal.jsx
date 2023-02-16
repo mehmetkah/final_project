@@ -1,11 +1,13 @@
+import "./styles.scss";
+
 export default function DailyTotal(props) {
   
   const reps = props.dailyTotal.reps;
   let sets = props.dailyTotal.sets;
   return (
-    <p>
+    <h3 className="totalTracker">
       Daily Total: {reps * sets + " " + props.dailyTotal.movement}
-    </p>
+    </h3>
   )
 
 

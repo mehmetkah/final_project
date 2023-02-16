@@ -1,9 +1,9 @@
-.cardContainer {
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@600&display=swap');
+
+.add {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center; 
-
 }
 
 .addButton {
@@ -15,14 +15,86 @@
   height: 70px;
   font-size: 3em;
   box-shadow: 3px 3px 5px #ccc;
+  transition: all .3s ease-in-out;
 }
 
 .addButton:hover {
   cursor: pointer;
+  box-shadow: 3px 3px 5px #000;
+}
+
+.dailyForm {
+  display: flex;
+  align-items: center;
+}
+
+.formFields {
+  display: flex;
+  flex-direction: column;
+}
+.formFields select {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1.3em;
+  margin: 4px;
+  padding: 2px;
+  border: 2px solid #3B7302;
+  border-radius: 4px;
+  width: 200px;
+}
+
+.formButtons button {
+  margin: 5px;
+  padding: 5px;
+  color: #fff;
+  background-color: #3B7302;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  font-family: epilogue;
+  font-size: 1.3em;
+  transition: all .3s ease-in-out;
+}
+
+.formButtons button:hover {
+  cursor: pointer;
+  border: 2px solid #C0D99C;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
 }
 
 .dailyTotal {
+  width: 100%;
   display: flex;
+  justify-content: center;
   color: #3B7302;
   font-size: 2em;
+}
+
+.countdown {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #3B7302;
+  font-size: 1.5em;
+  
+}
+
+.totalTracker {
+  color: #3B7302;
+  margin-top: 20px;
+}
+
+.hidden {
+  display: flex;
+}
+
+.countText {
+  margin: 0 10px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

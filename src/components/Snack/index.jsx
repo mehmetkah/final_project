@@ -33,19 +33,11 @@ export default function Snack(props) {
   }
 
   return (
-    <div>
-
+    <>
       {mode === "EMPTY" && <Empty onAdd={onAdd} />}
       {mode === "FORM" && <Form onBack={onBack} onDone={onDone}/>}
       {mode === "COMPLETE" && <MovementComplete dailyMovement={completedDailyTotal}/>}
-    </div>
+    </>
     
   )
 };
-
-/**
- *       {mode === "OLDCOMPLETE" && <MovementComplete 
-      dailyMovement={props.snack}
-      />}
- * 
- */

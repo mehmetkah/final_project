@@ -1,6 +1,8 @@
-// THIS VIEW WILL DISPLAY THE EXERCISE TALLY FOR THAT DAY AS THE REPS INCREASE AND ONCE THE DAY HAS BEEN COMPLETED - NEED TO WORK ON PULLING DATA BY DAY - NEED TO WORK ON STYLING
+// THIS VIEW WILL DISPLAY THE EXERCISE TALLY FOR THAT DAY AS THE REPS INCREASE AND ONCE THE DAY HAS BEEN COMPLETED
+
+import "./styles.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleCheck} from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 export default function MovementComplete(props) {
  
