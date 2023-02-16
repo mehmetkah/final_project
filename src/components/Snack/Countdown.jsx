@@ -22,8 +22,9 @@ export default function Countdown(props) {
       <h2>
         <FontAwesomeIcon icon={faClock}/>&nbsp;
         {formatTimeLeft(props.timer)}
-        {props.timer === 0 && <ReactHowler src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" playing={props.alarmRepeat} />}
+        {props.timer === 0 && <ReactHowler src="https://actions.google.com/sounds/v1/alarms/bugle_tune.ogg" playing={props.alarmRepeat} />}
       </h2>
     </div>
   )
 }
+//https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg
